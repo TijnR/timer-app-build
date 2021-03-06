@@ -23,8 +23,11 @@ const assets = [
   './static/media/synthwave-background.1a79017b.jpg',
 ]
 
-self.addEventListener('install', (evt) => {
-  caches.open(staticCacheName).then((cache) => {
-    cache.addAll(assets)
-  })
+self.addEventListener('install', (event) => {
+    console.log('Service worker install event!');
+    event.waitUntil(
+        caches.open(staticCacheName).then((cache) => {
+            cache.addAll(assets)
+        })
+    )
 })
