@@ -37,6 +37,8 @@ self.addEventListener('fetch', event => {
     .then(cachedResponse => {
         return cachedResponse || fetch(event.request)
     })
+    .catch((error) => { console.error('Error:', error);
+    })
     )
 })
 
